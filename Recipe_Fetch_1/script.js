@@ -4,24 +4,6 @@ const recipeList = document.querySelector("#recipe-list");
 const statusMessage = document.querySelector("#status");
 
 
-
-/*
-async function loadRecipe() {
-    const response = await fetch(API_URL + "/1");
-    console.log(response);
-    console.log(response.status);
-    const recipe = await response.json();
-    console.log(recipe);
-    console.log("Name: " + recipe.name);
-    console.log("First ingredient: " + recipe.ingredients[0]);
-    console.log("Total preparation + cooking time: " + recipe.prepTimeMinutes + recipe.cookTimeMinutes);
-
-    const recipeCard = createRecipeCard(recipe);
-    recipeList.replaceChildren(recipeCard);
-
-}
- */
-
 const CARD_FIELDS = "id,name,image,prepTimeMinutes,cookTimeMinutes,cuisine";
 const LIST_URL = API_URL + "?limit=12&select=" + CARD_FIELDS;
 
@@ -41,8 +23,6 @@ async function loadRecipes() {
 }
 
 loadRecipes();
-console.log("The rest of the script is running.");
-
 
 function createRecipeCard(recipe) {
     const card = document.createElement("article");
