@@ -22,7 +22,7 @@ async function loadRecipes() {
     }
 }
 
-loadRecipes();
+loadRecipes().then(() => console.log("Recipes loaded."));
 
 function createRecipeCard(recipe) {
     const card = document.createElement("article");
