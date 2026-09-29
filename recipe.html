@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's for dinner?</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/recipes.css">
+</head>
+<body>
+
+<header class="site-header">
+    <a class="brand" href="index.html">The recipe book</a>
+    <h1>What's for dinner?</h1>
+    <p>Find a recipe worth making.</p>
+</header>
+
+<main>
+    <section aria-labelledby="recipes-heading">
+        <h2 id="recipes-heading">Browse recipes</h2>
+        <p id="status" role="status"></p>
+        <div id="recipe-list" class="recipe-grid"></div>
+    </section>
+</main>
+
+<footer>
+    Recipe data from <a href="https://dummyjson.com/docs/recipes">DummyJSON</a>.
+</footer>
+
+<script type="module" src="js/recipes.js"></script>
+</body>
+</html>
