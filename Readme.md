@@ -23,6 +23,7 @@ CSS/                base.css, recipes.css, recipe-detail.css
 JS/api.js           all calls to the API
 JS/recipes.js       list page
 JS/recipe-detail.js detail page
+JS/theme.js         theme toggle
 ```
 
 ## Future improvements
