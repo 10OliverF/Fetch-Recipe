@@ -41,9 +41,10 @@ function renderRecipe(recipe) {
 async function loadRecipe() {
     try {
         const id = new URLSearchParams(window.location.search).get("id");
+        const numberId = Number(id);
 
-        if (!id) {
-            throw new Error("Missing recipe id.");
+        if (!Number.isInteger(numberId) || numberId < 1) {
+            throw new Error("Invalid recipe id.");
         }
 
         renderRecipe(await getRecipe(id));
