@@ -1,7 +1,14 @@
 const STORAGE_KEY = "theme";
 
 function getPreferredTheme() {
-    const saved = localStorage.getItem(STORAGE_KEY);
+    let saved;
+
+    try {
+        saved = localStorage.getItem(STORAGE_KEY);
+    } catch (error) {
+        console.warn("Could not read the saved theme.", error);
+    }
+
     if (saved === "light" || saved === "dark") {
         return saved;
     }
@@ -16,6 +23,7 @@ function applyTheme(theme) {
     const button = document.querySelector("#theme-toggle");
     if (button) {
         button.textContent = theme === "dark" ? "Light mode" : "Dark mode";
+        button.setAttribute("aria-pressed", String(theme === "dark"));
     }
 }
 
@@ -31,8 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             localStorage.setItem(STORAGE_KEY, next);
-        } catch {
-            // ignore, the theme just won't be remembered
+        } catch (error) {
+            console.warn("Could not save the theme.", error);
         }
         applyTheme(next);
     });
