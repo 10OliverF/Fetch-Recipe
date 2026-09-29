@@ -3,29 +3,26 @@ const API_URL = "https://dummyjson.com/recipes";
 const CARD_FIELDS =
     "id,name,image,prepTimeMinutes,cookTimeMinutes,cuisine";
 
-export async function getRecipes(limit = 12) {
-    const response = await fetch(
-        `${API_URL}?limit=${limit}&select=${CARD_FIELDS}`
-    );
+async function fetchJson(url, errorMessage) {
+    const response = await fetch(url);
 
     if (!response.ok) {
-        throw new Error(
-            `Could not load recipes (${response.status}).`
-        );
+        throw new Error(`${errorMessage} (${response.status}).`);
     }
 
-    return await response.json();
+    return response.json();
 }
 
-export async function getRecipe(id) {
-    const response = await fetch(
-        `${API_URL}/${id}`
+export function getRecipes(limit = 12) {
+    return fetchJson(
+        `${API_URL}?limit=${limit}&select=${CARD_FIELDS}`,
+        "Could not load recipes"
     );
-    if (!response.ok) {
-        throw new Error(
-            `Could not load recipe (${response.status}).`
-        );
-    }
-    return await response.json();
 }
 
+export function getRecipe(id) {
+    return fetchJson(
+        `${API_URL}/${id}`,
+        "Could not load recipe"
+    );
+}

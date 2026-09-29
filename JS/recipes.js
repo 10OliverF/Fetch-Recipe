@@ -3,63 +3,47 @@ import { getRecipes } from "./api.js";
 const recipeList = document.querySelector("#recipe-list");
 const statusMessage = document.querySelector("#status");
 
-async function loadRecipes() {
-    try {
-        const data = await getRecipes();
-
-        renderRecipes(data.recipes);
-
-    } catch (error) {
-        console.error(error);
-
-        statusMessage.textContent =
-            "Could not load recipes.";
-    }
-}
-
 function createRecipeCard(recipe) {
-
     const card = document.createElement("a");
-    card.href = `recipe.html?id=${recipe.id}`;
     card.className = "recipe-card";
+    card.href = `recipe.html?id=${recipe.id}`;
 
     const image = document.createElement("img");
     image.src = recipe.image;
     image.alt = recipe.name;
     image.loading = "lazy";
 
-    const content = document.createElement("div");
-    content.className = "card-body";
-
     const title = document.createElement("h3");
     title.textContent = recipe.name;
 
+    const totalTime = recipe.prepTimeMinutes + recipe.cookTimeMinutes;
     const meta = document.createElement("p");
     meta.className = "card-meta";
+    meta.textContent = `${recipe.cuisine} • ${totalTime} min`;
 
-    const totalTime =
-        recipe.prepTimeMinutes + recipe.cookTimeMinutes;
+    const body = document.createElement("div");
+    body.className = "card-body";
+    body.append(title, meta);
 
-    meta.textContent =
-        `${recipe.cuisine} • ${totalTime} min`;
-
-    content.append(title, meta);
-    card.append(image, content);
-
+    card.append(image, body);
     return card;
 }
 
 function renderRecipes(recipes) {
-    recipeList.replaceChildren();
+    recipeList.replaceChildren(...recipes.map(createRecipeCard));
+    statusMessage.textContent = `Recipes shown: ${recipes.length}`;
+}
 
-    recipes.forEach(recipe => {
-        recipeList.append(
-            createRecipeCard(recipe)
-        );
-    });
+async function loadRecipes() {
+    statusMessage.textContent = "Loading recipes...";
 
-    statusMessage.textContent =
-        `Recipes shown: ${recipes.length}`;
+    try {
+        const { recipes } = await getRecipes();
+        renderRecipes(recipes);
+    } catch (error) {
+        console.error(error);
+        statusMessage.textContent = "Could not load recipes. Please try again.";
+    }
 }
 
 loadRecipes();
