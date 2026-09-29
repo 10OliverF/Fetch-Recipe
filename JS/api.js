@@ -13,7 +13,7 @@ async function fetchJson(url, errorMessage) {
     return response.json();
 }
 
-export function getRecipes(limit = 12) {
+export function getRecipes(limit = 50) {
     return fetchJson(
         `${API_URL}?limit=${limit}&select=${CARD_FIELDS}`,
         "Could not load recipes"

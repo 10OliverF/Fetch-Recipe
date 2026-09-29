@@ -7,6 +7,19 @@
     --accent: #365c40;
     --accent-dark: #284a31;
     --line: #d9ddce;
+    --on-accent: #ffffff;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --paper: #141a16;
+    --surface: #1d2520;
+    --ink: #e6ebe4;
+    --muted: #a2ada0;
+    --accent: #7fb58a;
+    --accent-dark: #6ba277;
+    --line: #323f36;
+    --on-accent: #10190f;
 }
 
 * {
@@ -35,6 +48,7 @@ footer {
 .site-header {
     padding: 30px 0 40px;
     border-bottom: 1px solid var(--line);
+    position: relative;
 }
 
 footer {
@@ -69,10 +83,23 @@ button {
     border: 1px solid var(--accent);
     border-radius: 8px;
     background: var(--accent);
-    color: white;
+    color: var(--on-accent);
     cursor: pointer;
 }
 
 button:hover {
     background: var(--accent-dark);
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 24px;
+    right: 0;
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line);
+}
+
+.theme-toggle:hover {
+    background: var(--surface);
 }
