@@ -35,3 +35,4 @@ JS/theme.js         theme toggle
 - Add a feature to categorize recipes (e.g., by cuisine, meal type, dietary restrictions).
 - ~~Implement a dark mode toggle for better user experience.~~
 - Implement a feature to share recipes via social media or email.
+- Add favicon and improve the overall UI/UX design for a more appealing look.
