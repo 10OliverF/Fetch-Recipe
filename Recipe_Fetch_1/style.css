@@ -65,6 +65,10 @@ footer { padding: 16px 0 32px; font-size: 0.85rem; }
     border: 1px solid var(--line);
     border-radius: 16px;
     background: var(--surface);
+    cursor: pointer;
+    transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
 }
 
 .recipe-card > img {
@@ -75,6 +79,10 @@ footer { padding: 16px 0 32px; font-size: 0.85rem; }
     background: #e4e7da;
 }
 
+.recipe-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
+}
 .card-body { display: flex; flex-direction: column; gap: 12px; padding: 20px; flex: 1; }
 .card-meta { margin: 0; color: var(--muted); font-size: 0.9rem; }
 .card-body > button:first-of-type { margin-top: auto; }

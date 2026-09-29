@@ -1,0 +1,40 @@
+.recipe-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(min(100%, 245px), 1fr)
+        );
+    gap: 24px;
+}
+
+.recipe-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--surface);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+
+    transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
+}
+
+.recipe-card > img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+}

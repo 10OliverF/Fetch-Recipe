@@ -1,0 +1,27 @@
+.details-panel {
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--surface);
+}
+
+.detail-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+    gap: 28px;
+}
+
+.detail-layout > img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+@media (max-width: 640px) {
+    .detail-layout {
+        grid-template-columns: 1fr;
+    }
+}
