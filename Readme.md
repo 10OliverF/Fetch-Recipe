@@ -19,8 +19,8 @@ Then open http://localhost:8000.
 ```
 index.html          recipe list
 recipe.html         recipe details (recipe.html?id=1)
-css/                base.css, recipes.css, recipe-detail.css
-js/api.js           all calls to the API
-js/recipes.js       list page
-js/recipe-detail.js detail page
+CSS/                base.css, recipes.css, recipe-detail.css
+JS/api.js           all calls to the API
+JS/recipes.js       list page
+JS/recipe-detail.js detail page
 ```
