@@ -2,6 +2,7 @@ import { getRecipe } from "./api.js";
 
 const statusMessage = document.querySelector("#detail-status");
 const recipeSection = document.querySelector("#recipe-detail");
+const image = document.querySelector("#recipe-image");
 
 function setText(selector, value) {
     document.querySelector(selector).textContent = value;
@@ -13,14 +14,12 @@ function fillList(selector, items) {
         li.textContent = text;
         return li;
     });
-
     document.querySelector(selector).replaceChildren(...listItems);
 }
 
 function renderRecipe(recipe) {
     document.title = recipe.name;
 
-    const image = document.querySelector("#recipe-image");
     image.src = recipe.image;
     image.alt = recipe.name;
 
@@ -46,8 +45,7 @@ async function loadRecipe() {
         if (!Number.isInteger(numberId) || numberId < 1) {
             throw new Error("Invalid recipe id.");
         }
-
-        renderRecipe(await getRecipe(id));
+        renderRecipe(await getRecipe(numberId));
     } catch (error) {
         console.error(error);
         statusMessage.textContent = "Could not load recipe.";
