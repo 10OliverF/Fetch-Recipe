@@ -9,13 +9,15 @@ async function fetchJson(url, errorMessage) {
     if (!response.ok) {
         throw new Error(`${errorMessage} (${response.status}).`);
     }
-
     return response.json();
 }
 
-export function getRecipes(limit = 50) {
+export function getRecipes(limit = "20") {
+    const url = new URL(API_URL);
+    url.searchParams.set("limit", limit);
+    url.searchParams.set("select", CARD_FIELDS);
     return fetchJson(
-        `${API_URL}?limit=${limit}&select=${CARD_FIELDS}`,
+        url.toString(),
         "Could not load recipes"
     );
 }
